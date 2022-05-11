@@ -14,16 +14,16 @@ function MainContainer() {
   }, [])
 
   const handleStockClick = (e) => {
-    const stockName = e.target.innerText.split(/\r?\n/)[0]
-    const chosenStock = stocks.find(stock => stock.name === stockName || stock.ticker === stockName.split(":")[0])
+    const stockName = e.target.firstChild.textContent 
+    console.log(stockName);
+    const chosenStock = stocks.find(stock => stock.name === stockName || stock.ticker === stockName)
     setMyStocks([...myStocks, chosenStock])    
   }
 
   const deletePortfolioStock = (e) => {
-    const stockName = e.target.innerText.split(/\r?\n/)[0]
-    const filteredStocks = stocks.filter(stock => (stock.name != stockName || stock.ticker != stockName.split(":")[0]))
-    console.log(filteredStocks);
-    // setMyStocks(filteredStocks)   
+    const stockName = e.target.firstChild.textContent
+    const filteredStocks = myStocks.filter(stock => stock.name !== stockName) 
+    setMyStocks(filteredStocks)   
   }
 
   return (
