@@ -1,8 +1,8 @@
 import React from "react";
 
-function Stock({ stock, handleStockClick }) {
+function Stock({ stock, handleStockClick, deletePortfolioStock }) {
   return (
-    <div onClick={handleStockClick}>
+    <div onClick={handleStockClick || deletePortfolioStock}>
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">{stock.name}</h5>

@@ -15,13 +15,16 @@ function MainContainer() {
 
   const handleStockClick = (e) => {
     const stockName = e.target.innerText.split(/\r?\n/)[0]
-    // console.log("stockName:", stockName);
     const chosenStock = stocks.find(stock => stock.name === stockName || stock.ticker === stockName.split(":")[0])
-    // console.log("chosenStock:", chosenStock)
     setMyStocks([...myStocks, chosenStock])    
   }
 
-  // console.log("My Stocks:", myStocks);
+  const deletePortfolioStock = (e) => {
+    const stockName = e.target.innerText.split(/\r?\n/)[0]
+    const filteredStocks = stocks.filter(stock => (stock.name != stockName || stock.ticker != stockName.split(":")[0]))
+    console.log(filteredStocks);
+    // setMyStocks(filteredStocks)   
+  }
 
   return (
     <div>
@@ -31,7 +34,7 @@ function MainContainer() {
           <StockContainer stocks={stocks} handleStockClick={handleStockClick}/>
         </div>
         <div className="col-4">
-          <PortfolioContainer myStocks={myStocks}/>
+          <PortfolioContainer myStocks={myStocks} deletePortfolioStock={deletePortfolioStock}/>
         </div>
       </div>
     </div>
