@@ -1,10 +1,11 @@
 import React from "react";
 import Stock from "./Stock";
 
-function StockContainer({ stocks, handleStockClick }) {
+function StockContainer({ stocks, handleStockClick, stockType }) {
 
   const renderStocks = () => {
-    return stocks.map(stock => {
+    const stocksToDisplay = stocks.filter(stock => stock.type === stockType)
+    return stocksToDisplay.map(stock => {
       return <Stock key={stock.id} stock={stock} handleStockClick={handleStockClick}/>
     })
   }
