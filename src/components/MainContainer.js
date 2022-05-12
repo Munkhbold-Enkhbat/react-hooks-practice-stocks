@@ -7,6 +7,7 @@ function MainContainer() {
   const [stocks, setStocks] = useState([])
   const [myStocks, setMyStocks] = useState([])
   const [stockType, setStockType] = useState('')
+  const [sort, setSort] = useState('')
 
   useEffect(() => {
     fetch("http://localhost:3001/stocks")
@@ -30,12 +31,18 @@ function MainContainer() {
     setStockType(e.target.value);
   }
 
+  function handleCheckBtn(e) {
+    setSort(e.target.value)
+  }
+
   return (
     <div>
-      <SearchBar handleTypeChange={handleTypeChange}/>
+      <SearchBar handleTypeChange={handleTypeChange} 
+                 handleCheckBtn={handleCheckBtn}
+                 sort={sort}/>
       <div className="row">
         <div className="col-8">
-          <StockContainer stocks={stocks} handleStockClick={handleStockClick} stockType={stockType}/>
+          <StockContainer stocks={stocks} handleStockClick={handleStockClick} stockType={stockType} sort={sort}/>
         </div>
         <div className="col-4">
           <PortfolioContainer myStocks={myStocks} deletePortfolioStock={deletePortfolioStock}/>

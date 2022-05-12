@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchBar({ handleTypeChange }) {
+function SearchBar({ handleTypeChange, handleCheckBtn, sort }) {
   return (
     <div>
       <strong>Sort by:</strong>
@@ -9,8 +9,8 @@ function SearchBar({ handleTypeChange }) {
           type="radio"
           value="Alphabetically"
           name="sort"
-          checked={null}
-          onChange={null}
+          checked={sort === "Alphabetically"}
+          onChange={handleCheckBtn}
         />
         Alphabetically
       </label>
@@ -19,8 +19,8 @@ function SearchBar({ handleTypeChange }) {
           type="radio"
           value="Price"
           name="sort"
-          checked={null}
-          onChange={null}
+          checked={sort === "Price"}
+          onChange={handleCheckBtn}
         />
         Price
       </label>
